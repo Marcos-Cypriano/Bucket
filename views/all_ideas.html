@@ -1,0 +1,27 @@
+{% for idea in ideas %}
+    <div class="idea">
+        <img 
+            id="foto"
+            src="{{ idea.image }}" 
+            alt="Imagem de Curso de {{ idea.title }}">
+
+        <div class="content">
+            <script>
+                async function deletar(){
+                    await  fetch('/{{idea.id}}', {method: 'DELETE'})
+                    window.location.reload()
+                }
+            </script>
+
+            <h3>{{ idea.title }}</h3>
+            <p>{{ idea.category }}</p>
+            <div class="description">{{ idea.description }}</div>
+            <a href="{{ idea.link }}" target="_blank">Ir para a ideia</a>
+            <button id="posic" onclick="deletar()"><img src="https://image.flaticon.com/icons/svg/1000/1000582.svg"></button>
+        </div>                            
+    </div>
+
+
+    
+
+{% endfor %}
